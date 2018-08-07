@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration Page</title>
+<script type="text/javascript">
+function formValidation()
+{
+var fname = document.registration.fname;
+var lname = document.registration.lname;
+var email = document.registration.email;
+var contact = document.registration.contact;
+var address = document.registration.address;
+var city = document.registration.city;
+var state = document.registration.state;
+
+if(allLetter(fname))
+	{
+		if(allLetter1(lname))
+			{
+				if(ValidateEmail(email))
+					{
+						if(ValidateContact(contact))
+							{
+								if(validationForEmpty(address))
+									{
+										if(validationForEmpty(city))
+											{
+												if(stateSelect(state))
+													{}
+											}
+									}
+							}
+					}
+			}
+		alert("validated")	
+		return true;
+	}
+ 
+}
+
+function allLetter(fname)
+{ 
+var letters = /^[A-Za-z]+$/;
+if(fname.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('FirstName must have alphabet characters only');
+fname.focus();
+return false;
+}
+}
+
+function allLetter1(lname)
+{ 
+var letters = /^[A-Za-z]+$/;
+if(lname.value.match(letters))
+{
+return true;
+}
+else
+{
+alert('LastName must have alphabet characters only');
+lname.focus();
+return false;
+}
+}
+
+function ValidateEmail(email)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(email.value.match(mailformat))
+{
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+email.focus();
+return false;
+}
+}
+
+function ValidateContact(contact)
+{
+
+if(contact.value.length==10)
+{
+return true;
+}
+else
+{
+alert("You have entered an incorrect contact number!");
+email.focus();
+return false;
+}
+}
+
+function validationForEmpty(varValue)
+{
+
+if (varValue.value.length != 0 )
+{
+	return true;
+}
+else
+	{
+	alert(varValue + " can't be empty");
+	return false;
+}
+
+}
+
+function stateSelect(state)
+{
+if(state.value == "Default")
+{
+alert("Select your state from the list");
+state.focus();
+return false;
+}
+else
+{
+return true;
+}
+}
+</script>
+</head>
+<body>
+<centre>
+<table>
+<form name='registration'  onSubmit="return formValidation();">
+<tr>
+ <td>First Name:</td>
+ <td><input type="text" name="fname"  /></td> 
+</tr>
+<tr> 
+ <td>Last Name:</td>
+ <td><input type="text" name="lname" /> </td>
+ </tr>
+ <tr>
+ <td>Email:</td>
+ <td><input type="email" name="email" /> </td>
+ </tr>
+ <tr>
+ <td>Gender</td>
+ <td><input type="radio" name="gender" value="f"/> Female</td>
+ <td><input type="radio" name="gender" value="m"/>Male</td>
+ </tr>
+ <tr>
+ <td>Contact No:</td>
+ <td><input type="number" name="contact"  /> </td>
+ </tr>
+ <tr>
+ <td>Address:</td>
+ <td><input type="text" name="address"  /> </td>
+ </tr>
+ <tr>
+ <td>City:</td>
+ <td><input type="text" name="city"  /> </td>
+ </tr>
+ <tr>
+ <td>Hobby:</td>
+ <td><input type="checkbox" name="hobby"/>singing</td>
+ <td><input type="checkbox" name="hobby"/>dancing</td>
+ </tr>
+ <tr>
+ <td>State:</td>
+ <td> <select name="state">
+<option selected="" value="Default">(Please select a state)</option>
+<option value="Rajasthan">Rajasthan</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Gujarat">Gujarat</option>
+<option value="AndhraPradesh">AndhraPradesh</option>
+<option value="Maharastra">Maharastra</option>
+<option value="Goa">Goa</option>
+</select> </td>
+</tr>
+<tr>
+<td>  <input type="submit" name="submit" value="Submit" /></td>
+</tr> 
+
+</form>
+</table>
+</centre>
+</body>
+</html>
